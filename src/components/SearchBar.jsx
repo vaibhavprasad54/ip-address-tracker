@@ -22,14 +22,14 @@ const SearchBar = () => {
       const fetchData = async () => {
         if(shouldFetchData && searchedIpAddress && searchedIpAddress !== ''){
           try {
-            const response = await axios.get(`https://geo.ipify.org/api/v2/country,city?apiKey=at_tzRhaux1YPnysADooCrs3cNZp6Giv&ipAddress=${searchedIpAddress}`);
+            const response = await axios.get(`https://geo.ipify.org/api/v2/country,city?apiKey=${process.env.REACT_APP_API_KEY}&ipAddress=${searchedIpAddress}`);
             setLocationData(response.data);
           } catch (error) {
             console.log(`Error occured! ${error}`)
           }
         } else if(isFirstRender){
           try {
-            const response = await axios.get(`https://geo.ipify.org/api/v2/country,city?apiKey=at_tzRhaux1YPnysADooCrs3cNZp6Giv&`)
+            const response = await axios.get(`https://geo.ipify.org/api/v2/country,city?apiKey=${process.env.REACT_APP_API_KEY}&`)
             setLocationData(response.data);
           } catch (error) {
             console.log(`Error occured! ${error}`)
